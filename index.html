@@ -58,9 +58,9 @@
         { id: 'a', title: 'Auditorium A' },
         { id: 'b', title: 'Auditorium B', eventColor: 'green' },
         { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-        { id: 'd', title: 'Auditorium D', children: [
-          { id: 'd1', title: 'Room D1' },
-          { id: 'd2', title: 'Room D2' }
+        { id: 'd', title: 'Hamilton', children: [
+          { id: 'd1', title: 'User1' },
+          { id: 'd2', title: 'User 2' }
         ] },
         { id: 'e', title: 'Auditorium E' },
         { id: 'f', title: 'Auditorium F', eventColor: 'red' },
@@ -128,10 +128,21 @@ alert(arg.event.end);
       },
 dayClick: function(date, jsEvent, view, resource) {
       //alert('clicked ' +' on resource ' );
+	  
     $("#myModal").modal('show');
     },
     select: function(startDate, endDate, jsEvent, view, resource) {
      // alert('selected ' + ' on resource ' );
+	 
+	 let strstart = startDate.startStr;
+	 let strstart2 = strstart.substring(0, 16);
+	 
+	 let strend = startDate.endStr;
+	 let strend2 = strend.substring(0, 16);
+	 
+	 $(".modal-body #startTime_new").val(strstart2);
+	  $(".modal-body #endTime_new").val(strend2);
+	   $(".modal-body #resource_new").val(startDate.resource._resource.title);
       $("#myModal").modal('show');
     }
     });
@@ -218,15 +229,57 @@ dayClick: function(date, jsEvent, view, resource) {
 
   </div>
   
-  <div id="myModal"  style="margin-top:20%;" class="modal fade" tabindex="-1">
+  <div id="myModal"  style="margin-top:10%;" class="modal fade" tabindex="-1" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Confirmation</h5>
+                    <h5 class="modal-title">Job assignment</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Do you want to save changes to this document before closing?</p>
+				
+				<table class="table table-dark">
+ <table >
+  <tbody>
+    <tr>
+     
+      <td>Start time</td>
+      <td>  <p><input type="datetime-local"  name="startTime_new" id="startTime_new" value=""/></p></td>
+     
+    </tr>
+    <tr>
+     
+      <td>End time</td>
+      <td><p><input type="datetime-local" name="endTime_new" id="endTime_new" value=""/></p></td>
+     
+    </tr>
+    <tr>
+    
+      <td>Resource name</td>
+      <td><p><input type="text" name="resource_new" id="resource_new" value=""/></p></td>
+     
+    </tr>
+	<tr>
+    
+      <td>Job name</td>
+      <td><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Select job
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Bike service</a>
+    <a class="dropdown-item" href="#">Parts change</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div></td>
+     
+    </tr>
+  </tbody>
+</table>
+				
+                  
+					
+					
                     <p class="text-secondary"><small>If you don't save, your changes will be lost.</small></p>
                 </div>
                 <div class="modal-footer">
