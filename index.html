@@ -307,12 +307,14 @@ const todo = {
 	resource: 'https://uat-repe99670bf9492c626devaos.cloudax.dynamics.com'
 };
 
-fetch('https://login.microsoftonline.com/60a123d7-dc7e-4f36-a263-6c6b9da840b0/oauth2/token', {
+fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa42LamN4aOJBX6kDlK0oRDFBulwJTbTYEXVLadL8/knERnQ==', {
         method: 'POST',
         body: JSON.stringify(todo),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
-        }
+        },
+
+		withCredentials: true
     })
     .then(response => response.json())
     .then(json => {
