@@ -309,12 +309,12 @@ const todo = {
 
 fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa42LamN4aOJBX6kDlK0oRDFBulwJTbTYEXVLadL8/knERnQ==', {
         method: 'POST',
-        body: JSON.stringify(todo),
+      //  body: JSON.stringify(todo),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
-        },
+        }
 
-		withCredentials: true
+	//	withCredentials: true
     })
     .then(response => response.json())
     .then(json => {
