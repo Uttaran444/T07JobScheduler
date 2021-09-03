@@ -3,10 +3,12 @@
  
  <script>
  function validateLogin() {
+	 var tempUserId = document.getElementById("InputEmail1").innerHTML;
+	 var tempPassword = document.getElementById("InputPassword1").innerHTML;
  const loginjson = {
     operation: 'Login',
-    userid: document.getElementById("InputEmail1").innerHTML,
-	password: document.getElementById("InputPassword1").innerHTML,
+    userid: tempUserId,
+    password: tempPassword
 	
 };
 
