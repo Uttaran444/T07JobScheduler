@@ -5,6 +5,41 @@
  function validateLogin() {
 	 var tempUserId = document.getElementById("InputEmail1").value;
 	 var tempPassword = document.getElementById("InputPassword1").value;
+	 
+	  let xhr = new XMLHttpRequest();
+            let url = "https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==";
+        
+            // open a connection
+            xhr.open("POST", url, true);
+  
+            // Set the request header i.e. which type of content you are sending
+            xhr.setRequestHeader("Content-Type", "application/json");
+  
+            // Create a state change callback
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+  
+			if (this.responseText == "Success")
+			{
+				location.replace("https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html");
+			}
+			else
+			{
+				alert("Wrong userid/password");
+			}
+                    // Print received data from server
+                  //  result.innerHTML = this.responseText;
+  
+                }
+            };
+  
+            // Converting JSON data to string
+            var data = JSON.stringify({"operation": "Login", "userid": tempUserId, "password": tempPassword });
+  
+            // Sending data with the request
+            xhr.send(data);
+	 
+	 /*
  const loginjson = {
     operation: 'Login',
     userid: tempUserId,
@@ -37,6 +72,7 @@ fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa
          var wait = 5;
       }
       }
+      */
 }
  </script>
    <!-- Required meta tags -->
