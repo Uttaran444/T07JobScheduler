@@ -32,7 +32,9 @@ fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa
 			alert("Wrong userid/password");
 		}
     }).catch(err => console.log(err));
-	 await sleep(6000);
+	 for (let i = 1; i <20000 ; i++) {        
+         var wait = 5;
+      }
 }
  </script>
    <!-- Required meta tags -->
