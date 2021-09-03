@@ -1,6 +1,37 @@
 <html>
 <head>
  
+ <script>
+ function validateLogin() {
+ const loginjson = {
+    operation: 'Login',
+    userid: document.getElementById("InputEmail1").innerHTML,
+	password: document.getElementById("InputPassword1").innerHTML,
+	
+};
+
+fetch('https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==', {
+        method: 'POST',
+        body: JSON.stringify(loginjson),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+
+	//	withCredentials: true
+    })
+    .then(response => response.text())
+    .then(result  => {
+        if (result == "Success")
+		{
+			location.replace("https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html")
+		}
+		else
+		{
+			alert("Wrong userid/password");
+		}
+    }).catch(err => console.log(err));
+}
+ </script>
    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +41,7 @@
  <link rel="stylesheet" href="login_style.css">
 </head>
  
-<body background="Login.jpg">
+<body background="LoginImage.jpeg">
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -31,7 +62,7 @@
           <label for="InputPassword1">Password</label>
           <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button class="btn btn-primary btn-block" onclick = "validateLogin()">Submit</button>
         <div class="form-footer">
           <p> Don't have an account? <a href="#">Sign Up</a></p>
           
