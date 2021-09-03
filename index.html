@@ -2,8 +2,12 @@
 <head>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script>
- function validateLogin() {
-	 var tempUserId = document.getElementById("InputEmail1").value;
+
+	
+	 $(document).ready(function() {
+    $('#loginform').submit(function(e) {
+        e.preventDefault();
+	     var tempUserId = document.getElementById("InputEmail1").value;
 	 var tempPassword = document.getElementById("InputPassword1").value;
 	 
 	 
@@ -36,6 +40,8 @@ $.ajax({
                 }
            }
 	   });
+	     });
+		  });
 	/*
 fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa42LamN4aOJBX6kDlK0oRDFBulwJTbTYEXVLadL8/knERnQ==', {
         method: 'POST',
@@ -63,7 +69,7 @@ fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa
       }
       }
       */
-}
+
  </script>
    <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -85,7 +91,7 @@ fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa
     <!-- row and justify-content-center class is used to place the form in center -->
     <section class="row justify-content-center">
       <section class="col-12 col-sm-6 col-md-4">
-        <form class="form-container">
+        <form class="form-container" id="loginform" method="post">
         <div class="form-group">
           <h4 class="text-center font-weight-bold"> Login </h4>
           <label for="InputEmail1">User Id</label>
@@ -95,7 +101,7 @@ fetch('https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa
           <label for="InputPassword1">Password</label>
           <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
         </div>
-        <button class="btn btn-primary btn-block" onclick = "validateLogin()">Submit</button>
+        <button type="submit"  class="btn btn-primary btn-block" >Submit</button>
         <div class="form-footer">
           <p> Don't have an account? <a href="#">Sign Up</a></p>
           
