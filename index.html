@@ -21,16 +21,16 @@
 };
  $.ajax({
             type: "POST",
-            url: 'https://ducojobscheduler.azurewebsites.net/api/HttpTrigger1?code=Gx0PRJWa42LamN4aOJBX6kDlK0oRDFBulwJTbTYEXVLadL8/knERnQ==',
+            url: 'https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==',
             data: loginjson,
 	    async:false,
             success: function(response)
             {
-                var jsonData = JSON.parse(response);
+               
   
                 // user is logged in successfully in the back-end
                 // let's redirect
-                if (jsonData.success == "1")
+                if (response == "Success")
                 {
                     location.href = 'https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html';
                 }
