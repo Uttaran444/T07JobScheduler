@@ -203,6 +203,9 @@ dayClick: function(date, jsEvent, view, resource) {
 </style>
 </head>
 <body>
+	<h1>The XMLHttpRequest Object</h1>
+
+<button type="button" onclick="loadDoc()">Request data</button>
 
   <div id='wrap'>
     <div>
@@ -292,14 +295,14 @@ dayClick: function(date, jsEvent, view, resource) {
 	  
 	  
 	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<h1>The XMLHttpRequest Object</h1>
 
-<button type="button" onclick="loadDoc()">Request data</button>
 
 <p id="demo"></p>
 
 <script>
 function loadDoc() {
+	var externalElemnt = document.getElementsByClassName("appmagic-label-text");
+	alert(externalElemnt);
 const todo = {
     grant_type: 'client_credentials',
     client_id: '4bdf3990-e891-4478-abfa-4801b4a9884b',
