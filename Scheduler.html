@@ -13,7 +13,7 @@
   }
 </style>
 <script>
-	
+var resourceData = null;
  var queryString = new Array();
     window.onload = function () {
         if (queryString.length == 0) {
@@ -30,6 +30,40 @@
            
             document.getElementById("lblData").innerHTML = queryString["ParmUserId"];
         }
+	    
+	const resource = {
+	    operation: 'Resource',
+	    userid: 'uGhorai',
+	    password: '1234'
+
+	};
+	    
+ $.ajax({
+            type: "POST",
+            url: 'https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==',
+            data: JSON.stringify(resource),
+	    dataType: "json",
+	    contentType: "application/json; charset=utf-8",
+	    async:false,
+            success: function(response)
+            {
+               
+  
+                // user is logged in successfully in the back-end
+                // let's redirect
+                if (response == "Success")
+                {
+                    resourceData = response;
+			
+                }
+                else
+                {
+                    alert('Invalid Credentials!');
+                }
+           }
+	   });
+	  	    
+
     };
 	
 	
@@ -74,37 +108,7 @@
         }
       },
       resourceAreaHeaderContent: 'Rooms',
-      resources: [
-        { id: 'a', title: 'Auditorium A' },
-        { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-        { id: 'c', title: 'Auditorium C', eventColor: 'orange' },
-        { id: 'd', title: 'Hamilton', children: [
-          { id: 'd1', title: 'User1' },
-          { id: 'd2', title: 'User 2' }
-        ] },
-        { id: 'e', title: 'Auditorium E' },
-        { id: 'f', title: 'Auditorium F', eventColor: 'red' },
-        { id: 'g', title: 'Auditorium G' },
-        { id: 'h', title: 'Auditorium H' },
-        { id: 'i', title: 'Auditorium I' },
-        { id: 'j', title: 'Auditorium J' },
-        { id: 'k', title: 'Auditorium K' },
-        { id: 'l', title: 'Auditorium L' },
-        { id: 'm', title: 'Auditorium M' },
-        { id: 'n', title: 'Auditorium N' },
-        { id: 'o', title: 'Auditorium O' },
-        { id: 'p', title: 'Auditorium P' },
-        { id: 'q', title: 'Auditorium Q' },
-        { id: 'r', title: 'Auditorium R' },
-        { id: 's', title: 'Auditorium S' },
-        { id: 't', title: 'Auditorium T' },
-        { id: 'u', title: 'Auditorium U' },
-        { id: 'v', title: 'Auditorium V' },
-        { id: 'w', title: 'Auditorium W' },
-        { id: 'x', title: 'Auditorium X' },
-        { id: 'y', title: 'Auditorium Y' },
-        { id: 'z', title: 'Auditorium Z' }
-      ],
+      resources: resourceData,
       events: [
         { id: '1', resourceId: 'b', start: '2020-09-07T02:00:00', end: '2020-09-07T07:00:00', title: 'event 1' },
         { id: '2', resourceId: 'c', start: '2020-09-07T05:00:00', end: '2020-09-07T22:00:00', title: 'event 2' },
