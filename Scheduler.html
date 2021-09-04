@@ -31,25 +31,7 @@ var resourceData = null;
             document.getElementById("lblData").innerHTML = queryString["ParmUserId"];
         }
 	    
-	const resource = {
-	    operation: 'Resource',
-	    userid: 'uGhorai',
-	    password: '1234'
-
-	};
-	    
- $.ajax({
-            type: "POST",
-            url: 'https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==',
-            data: JSON.stringify(resource),
-	    dataType: "json",
-	    contentType: "application/json; charset=utf-8",
-	    async:false,
-            success: function(response)
-            {
-                resourceData = response;
-            }
-	   });
+	
 	  	    
 
     };
@@ -73,7 +55,26 @@ var resourceData = null;
 
     /* initialize the calendar
     -----------------------------------------------------------------*/
+const resource = {
+	    operation: 'Resource',
+	    userid: 'uGhorai',
+	    password: '1234'
 
+	};
+	    
+ $.ajax({
+            type: "POST",
+            url: 'https://t07jobschedulerconnector.azurewebsites.net/api/Function1?code=vgJGeUaTKzOwryAzm55GTPboKpYYIYjU5CMfjZQmDYDjnStsg7YW7g==',
+            data: JSON.stringify(resource),
+	    dataType: "json",
+	    contentType: "application/json; charset=utf-8",
+	    async:false,
+            success: function(response)
+            {
+                resourceData = response;
+            }
+	   });
+	  
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       now: '2020-09-07',
