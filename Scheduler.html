@@ -219,9 +219,35 @@ dayClick: function(date, jsEvent, view, resource) {
 </style>
 </head>
 <body>
-	<h1><span id="lblData"></span></h1>
+<style>
+div.relative2 {
+  position: relative;
+  left: 1110px;
+  top: 10px;
+ 
+}
+</style>
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('currentTime').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
 
-<button type="button" onclick="loadDoc()">Request data</button>
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<div class="relative2">
+	<h5><span id="lblData"></span></h5>
+	<h6><span id="currentTime"></span></h6>
+	</div>
 
   <div id='wrap'>
     <div>
