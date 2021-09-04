@@ -35,7 +35,13 @@
                 // let's redirect
                 if (response == "Success")
                 {
-                    location.href = 'https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html';
+                    //location.href = 'https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html';
+			
+			//var name = document.getElementById("txtName").value;
+       			// var tech = document.getElementById("ddlTechnolgy").value;
+			var url = "https://salmon-meadow-05da4a510.azurestaticapps.net/Scheduler.html?ParmUserId=" + tempUserId + ;
+			window.location.href = url;
+			
                 }
                 else
                 {
