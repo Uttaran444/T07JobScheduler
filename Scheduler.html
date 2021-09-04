@@ -13,6 +13,26 @@
   }
 </style>
 <script>
+	
+ var queryString = new Array();
+    window.onload = function () {
+        if (queryString.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+        }
+        if (queryString["ParmUserId"] != null) {
+           
+            document.getElementById("lblData").innerHTML = queryString["ParmUserId"];
+        }
+    };
+	
+	
 
   document.addEventListener('DOMContentLoaded', function() {
 
@@ -203,7 +223,7 @@ dayClick: function(date, jsEvent, view, resource) {
 </style>
 </head>
 <body>
-	<h1>The XMLHttpRequest Object</h1>
+	<h1><span id="lblData"></span></h1>
 
 <button type="button" onclick="loadDoc()">Request data</button>
 
