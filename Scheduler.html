@@ -47,20 +47,8 @@ var resourceData = null;
 	    async:false,
             success: function(response)
             {
-               
-  
-                // user is logged in successfully in the back-end
-                // let's redirect
-                if (response == "Success")
-                {
-                    resourceData = response;
-			
-                }
-                else
-                {
-                    alert('Invalid Credentials!');
-                }
-           }
+                resourceData = response;
+            }
 	   });
 	  	    
 
