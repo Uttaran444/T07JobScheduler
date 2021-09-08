@@ -103,8 +103,16 @@ const resource = {
 	  
 	  
     var calendarEl = document.getElementById('calendar');
+	  
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+	  
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      now: '2020-09-07',
+      now: today,
       editable: true, // enable draggable events
       droppable: true, // this allows things to be dropped onto the calendar
       selectable: true,
